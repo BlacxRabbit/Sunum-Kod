@@ -37,7 +37,7 @@ tekrar kullanılabilir hale gelir. Bu yüzden bu depo bilinçli olarak ikiye ayr
 | `victim-repo/scripts/stage2-loader.js` | `%TEMP%\programx64\main.js` | Çalışır |
 | `victim-repo/scripts/backdoor.js` | OtterCookie (sysinfo + VM tespiti + C2 kanalı) | Çalışır (whitelist'li) |
 | `victim-repo/scripts/filescanner.js` | InvisibleFerret JS dosya tarayıcı | Çalışır (demo klasörüyle sınırlı) |
-| `victim-repo/scripts/persistence.js` / `.ps1` | Startup klasörü + "Runtime Broker" scheduled task | Çalışır |
+| `victim-repo/scripts/persistence.js` | Startup klasörü + "Runtime Broker" scheduled task | Çalışır |
 | `victim-repo/scripts/open-decoy.ps1` | `-EncodedCommand` ile sahte web app açma | Çalışır |
 | `victim-repo/surveillance/*.stub.js` | Keylogger, ekran görüntüsü, tarayıcı kimlik bilgisi hırsızlığı | **Yalnızca yorum / iskelet** |
 | `attacker-c2/` | Saldırgan C2 altyapısı + operatör paneli | Çalışır (yalnızca localhost) |

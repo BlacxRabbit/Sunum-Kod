@@ -1,0 +1,15 @@
+{
+  "name": "attacker-c2-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Contagious Interview vakasinin egitim amacli mock C2 sunucusu (yalnizca localhost).",
+  "scripts": {
+    "start": "node server.js",
+    "operator": "node operator-console.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "multer": "^2.0.0",
+    "socket.io": "^4.7.0"
+  }
+}

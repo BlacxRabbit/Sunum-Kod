@@ -55,8 +55,11 @@ async function makeLog(message) {
 function detectVirtualMachine() {
   try {
     if (os.platform() === "win32") {
+      // stdio[2]='ignore': wmic bazi Windows surumlerinde kaldirilmis olabilir;
+      // basarisiz olursa hata mesaji terminale sizmasin, sadece catch bloguna dussun.
       const out = execSync("wmic computersystem get model,manufacturer", {
         windowsHide: true,
+        stdio: ["ignore", "pipe", "ignore"],
       })
         .toString()
         .toLowerCase();
@@ -65,6 +68,7 @@ function detectVirtualMachine() {
     if (os.platform() === "darwin") {
       const out = execSync("system_profiler SPHardwareDataType", {
         windowsHide: true,
+        stdio: ["ignore", "pipe", "ignore"],
       })
         .toString()
         .toLowerCase();
