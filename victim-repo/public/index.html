@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<title>RealEstate Marketplace (Demo)</title>
+<!--
+  Rapordaki gercek repo bu noktada tamamen calisan, gercek gorunumlu bir
+  gayrimenkul ilan sitesiydi. Sayfa basliklari disinda cogu icerik
+  placeholder'di. Bu demo dosyasi ayni fikri yansitir: teknik zincirin
+  odagi bu sayfanin kendisi degil, arka planda calisan scripts/*.js.
+-->
+<style>
+  body{font-family:system-ui,sans-serif;background:#f3f1ec;color:#20241f;margin:0;}
+  header{padding:24px 32px;border-bottom:1px solid #ddd;background:#fff;}
+  h1{margin:0;font-size:20px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:32px;}
+  .card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:16px;}
+  .card h3{margin:0 0 6px;font-size:16px;}
+  .card p{margin:2px 0;color:#666;font-size:13px;}
+  .badge{display:inline-block;margin-top:26px;margin-left:32px;font-size:12px;color:#a5651c;border:1px solid #a5651c;padding:3px 8px;border-radius:99px;}
+</style>
+</head>
+<body>
+  <header><h1>RealEstate Marketplace</h1></header>
+  <span class="badge">EĞİTİM DEMOSU — gerçek ilan verisi değildir</span>
+  <div class="grid" id="listings">Yükleniyor…</div>
+  <script>
+    fetch("/api/listings")
+      .then((r) => r.json())
+      .then((items) => {
+        document.getElementById("listings").innerHTML = items
+          .map(
+            (it) => `<div class="card"><h3>${it.title}</h3><p>${it.city}</p><p>${it.price}</p></div>`
+          )
+          .join("");
+      });
+  </script>
+</body>
+</html>

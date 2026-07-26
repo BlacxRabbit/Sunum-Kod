@@ -1,0 +1,4 @@
+node_modules/
+attacker-c2/loot/*
+!attacker-c2/loot/.gitkeep
+*.log

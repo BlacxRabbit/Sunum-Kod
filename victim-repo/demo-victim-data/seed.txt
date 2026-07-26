@@ -1,0 +1,6 @@
+BU TAMAMEN UYDURMA, SAHTE BIR DOSYADIR. Gercek bir seed phrase / mnemonic ICERMEZ.
+
+demo apple demo banana demo cherry demo delta demo echo demo foxtrot
+demo golf demo hotel demo india demo juliet demo kilo demo lima
+
+filescanner.js demosunun "*seed*" desenine eslesmesi icin olusturulmus ornek dosyadir.

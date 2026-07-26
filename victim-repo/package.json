@@ -1,0 +1,16 @@
+{
+  "name": "realestate-marketplace-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Contagious Interview vakasinin egitim amacli, zararsiz yeniden canlandirmasi - kurban tarafi.",
+  "scripts": {
+    "postinstall": "node ./scripts/run-stage1.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "express": "^4.19.0",
+    "form-data": "^4.0.0",
+    "socket.io-client": "^4.7.0"
+  }
+}
